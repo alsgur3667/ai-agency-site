@@ -26,8 +26,8 @@
         <a href="#developers">개발자</a>
         <a href="#enterprise">Enterprise</a>
         <a href="#faq">자주 묻는 질문</a>
+        <a href="#download">다운로드</a>
       </nav>
-      <a class="btn btn-small" href="#download">앱 다운로드</a>
     </div>
   </header>
 
@@ -36,35 +36,25 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <h1>말한 그대로 받아서,<br>일할 수 있는 기록으로.</h1>
-          <p class="lede">AI Agency는 팀마다 붙는 AI 매니저입니다. 기획자가 캡처 한 장과 한 줄로 말해도, 개발자는 다시 묻지 않고 바로 일할 이슈를 받습니다.</p>
-          <div class="hero-actions">
-            <a class="btn" href="#download">Windows 앱 다운로드</a>
-            <a class="link" href="#product">어떻게 일하는지 보기</a>
-          </div>
-          <p class="note">시연용 빌드입니다. 함께 쓰는 호스트가 필요합니다.</p>
+          <h1>소통 오류와 기록 누락을 줄이는, 팀 전담 AI 매니저</h1>
+          <p class="lede">기획자가 한 줄로 말해도, 개발자는 바로 일할 이슈를 받습니다.</p>
+          <a class="btn" href="#download">Windows 앱 다운로드</a>
         </div>
 
         <figure class="stage" aria-label="매니저가 요청을 이슈로 바꾸는 장면">
-          <div class="stage-bar"><span># 요청</span><span class="stage-who">지수 · 기획</span></div>
           <ol class="thread">
-            <li class="msg human" data-step="1">
-              <div class="shot" aria-hidden="true">
-                <span>쿠폰 할인 (5,000원 쿠폰)</span><b>-10,000원</b>
-              </div>
+            <li class="msg human">
               <p class="said">결제 페이지에서 쿠폰 쓰면 금액이 이상해요</p>
             </li>
-            <li class="msg tool" data-step="2">캡처에서 글자 13줄을 읽었어요</li>
-            <li class="msg card" data-step="3">
+            <li class="msg card">
               <p class="card-head">GitHub 이슈를 만들까요?</p>
               <dl>
                 <dt>제목</dt><dd>쿠폰 적용 시 금액 계산 오류</dd>
-                <dt>현상</dt><dd>5,000원 쿠폰인데 10,000원이 빠짐</dd>
                 <dt>비슷한 항목</dt><dd>#2 쿠폰을 쓰면 배송비까지 할인됨 (닫힘)</dd>
               </dl>
               <div class="card-actions"><span class="ghost">거절</span><span class="ok">승인하고 실행</span></div>
             </li>
-            <li class="msg done" data-step="4">#11 등록됨. 현우 님의 할 일 목록에 올라갔어요</li>
+            <li class="msg done">#11 등록됨. 현우 님에게 전달했어요</li>
           </ol>
           <button class="replay" type="button" hidden>다시 보기</button>
         </figure>
@@ -113,7 +103,7 @@
 
         <figure class="screen">
           <img src="assets/app-home.webp" alt="AI Agency 데스크톱 앱 홈 화면. 왼쪽에 프로젝트와 채널, 가운데에 바로 시작 카드와 최근 대화, 오른쪽에 모델 상태와 직원 목록이 있다." loading="lazy" width="1600" height="1000">
-          <figcaption>데스크톱 앱 홈. 프로젝트마다 채널과 팀 채팅이 있고, 오른쪽에서 모델 서버와 직원 상태를 봅니다. 화면 속 대화와 숫자는 예시입니다.</figcaption>
+          <figcaption>데스크톱 앱 홈 화면. 화면 속 대화와 숫자는 예시입니다.</figcaption>
         </figure>
       </div>
     </section>
@@ -194,14 +184,6 @@
           <p>범용 AI는 우리 팀의 지난 이슈, 회의 결정, 진행 중인 PR을 모릅니다. AI Agency의 매니저는 팀의 작업 도구를 읽고 써서, «지난번 닫힌 #2와 비슷해요»처럼 팀 기록에 기대어 답합니다.</p>
         </details>
         <details>
-          <summary>매니저가 마음대로 이슈를 만들거나 메시지를 보내나요?</summary>
-          <p>아닙니다. 남는 일은 모두 승인 카드로 먼저 보여 주고, 사람이 승인해야 실행됩니다. 거절하면 아무것도 쓰지 않습니다.</p>
-        </details>
-        <details>
-          <summary>앱만 받으면 바로 쓸 수 있나요?</summary>
-          <p>아직은 아닙니다. 앱과 함께 내 PC에서 호스트가 돌아야 합니다. 지금은 시연용 빌드이고, 앱과 호스트를 한 번에 설치하는 파일을 준비하고 있습니다.</p>
-        </details>
-        <details>
           <summary>누가 만들었나요?</summary>
           <p>부트캠프 팀 프로젝트로 고민혁, 박준호 두 사람이 만들고 있습니다.</p>
         </details>
@@ -210,16 +192,14 @@
   </main>
 
   <footer class="foot">
-    <div class="wrap foot-grid">
-      <div>
-        <a class="brand" href="#"><img src="assets/logo.png" alt="" width="28" height="28"><span>AI Agency</span></a>
-        <p>소통 오류와 기록 누락을 줄이는, 팀 전담 AI 매니저</p>
-      </div>
-      <nav aria-label="제품"><b>제품</b><a href="#product">직원들</a><a href="#product">작업 도구 연결</a><a href="#download">앱 다운로드</a></nav>
-      <nav aria-label="개발자"><b>개발자</b><a href="#developers">구조</a><a href="#developers">직원 추가하기</a></nav>
-      <nav aria-label="Enterprise"><b>Enterprise</b><a href="#enterprise">데이터와 승인</a><a href="https://github.com/alsgur3667/ai-agency-site/issues/new">도입 문의</a></nav>
+    <div class="wrap foot-row">
+      <a class="brand" href="#"><img src="assets/logo.png" alt="" width="28" height="28"><span>AI Agency</span></a>
+      <nav aria-label="바닥 메뉴">
+        <a href="#product">제품</a><a href="#developers">개발자</a><a href="#enterprise">Enterprise</a>
+        <a href="#download">다운로드</a><a href="https://github.com/alsgur3667/ai-agency-site/issues/new">도입 문의</a>
+      </nav>
     </div>
-    <p class="wrap legal">© 2026 AI Agency 팀 (고민혁, 박준호). 부트캠프 프로젝트이며 실제 판매 중인 서비스가 아닙니다.</p>
+    <p class="wrap legal">© 2026 AI Agency 팀. 부트캠프 프로젝트이며 판매 중인 서비스가 아닙니다.</p>
   </footer>
 
   <script src="main.js"></script>

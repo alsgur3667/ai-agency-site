@@ -61,9 +61,7 @@ code { font-family: var(--mono); font-size: 0.9em; }
   transition: background-color 0.15s;
 }
 .btn:hover { background: var(--blue-ink); }
-.btn-small { min-height: 38px; padding: 0 16px; font-size: var(--step--1); }
 .btn-large { min-height: 56px; padding: 0 28px; font-size: var(--step-1); }
-.link { color: var(--ink); font-weight: 600; }
 
 /* 상단 */
 .top {
@@ -75,22 +73,23 @@ code { font-family: var(--mono); font-size: 0.9em; }
 .top-row { display: flex; align-items: center; gap: 28px; min-height: 64px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 750; letter-spacing: -0.01em; }
 .brand img { border-radius: 8px; }
-.nav { display: flex; gap: 22px; margin-right: auto; }
+.nav { display: flex; gap: 22px; margin-left: auto; }
 .nav a { color: var(--ink-2); text-decoration: none; font-weight: 550; font-size: 0.97rem; }
 .nav a:hover { color: var(--ink); }
 
 /* 첫 화면 */
-.hero { padding: 72px 0 88px; }
-.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.hero { padding: 96px 0 112px; }
+.hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 72px; align-items: center; }
 h1 {
   font-size: var(--step-4);
   line-height: 1.12;
   letter-spacing: -0.035em;
   font-weight: 820;
   margin: 0 0 24px;
+  max-width: 11em;
+  text-wrap: balance;
 }
-.lede { font-size: var(--step-1); color: var(--ink-2); max-width: 34em; margin: 0 0 32px; line-height: 1.65; }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+.lede { font-size: var(--step-1); color: var(--ink-2); max-width: 30em; margin: 0 0 36px; line-height: 1.6; }
 .note { color: var(--ink-2); font-size: var(--step--1); margin: 16px 0 0; }
 
 /* 장면: 앱과 같은 어두운 화면 */
@@ -100,32 +99,18 @@ h1 {
   color: var(--night-text);
   border-radius: 20px;
   padding: 0 0 20px;
-  box-shadow: 0 30px 60px -30px rgba(15, 26, 43, 0.55);
   position: relative;
-  min-height: 470px;
+  min-height: 340px;
 }
-.stage-bar {
-  display: flex; justify-content: space-between;
-  padding: 14px 20px; border-bottom: 1px solid var(--night-line);
-  font-size: var(--step--1); color: #fff; font-weight: 650;
-}
-.stage-who { color: var(--night-text); font-weight: 500; }
-.thread { list-style: none; margin: 0; padding: 20px 20px 0; display: grid; gap: 14px; }
+.thread { list-style: none; margin: 0; padding: 24px 22px 0; display: grid; gap: 16px; }
 .msg { font-size: 0.95rem; line-height: 1.55; }
 
 .human { justify-self: end; max-width: 82%; display: grid; gap: 8px; justify-items: end; }
-.shot {
-  background: #fff; color: #222; border-radius: 10px;
-  padding: 12px 14px; display: flex; gap: 18px; font-size: 0.82rem; width: 240px; justify-content: space-between;
-}
-.shot b { color: #cf222e; }
 /* 사람이 한 말만 손글씨에 가까운 글꼴과 형광펜 색 */
 .said {
   margin: 0; font-family: var(--voice); font-size: 1.05rem; color: var(--ink);
   background: var(--said); padding: 10px 16px; border-radius: 16px 16px 4px 16px;
 }
-.tool { color: #8ea3c4; font-size: var(--step--1); padding-left: 2px; }
-.tool::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); margin-right: 8px; vertical-align: 2px; }
 
 .card {
   background: var(--night-2); border: 1px solid #3b5584; border-radius: 14px; padding: 16px 18px;
@@ -152,6 +137,8 @@ h1 {
 .replay:hover { color: #fff; }
 
 /* 한 번만 재생되는 장면. 자바스크립트가 없거나 움직임 줄이기면 처음부터 다 보인다 */
+.js .stage.play { opacity: 0; }
+.js .stage.play.on { opacity: 1; transition: opacity 0.5s ease; }
 .js .stage.play .msg { opacity: 0; transform: translateY(8px); }
 .js .stage.play .msg.shown { opacity: 1; transform: none; transition: opacity 0.45s ease, transform 0.45s ease; }
 
@@ -240,29 +227,24 @@ details[open] summary::after { content: "−"; }
 details p { margin: 0 0 22px; color: var(--ink-2); max-width: 38em; }
 
 /* 푸터 */
-.foot { background: var(--night); color: var(--night-text); padding: 64px 0 32px; }
+.foot { background: var(--night); color: var(--night-text); padding: 48px 0 28px; }
 .foot .brand { color: #fff; }
-.foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
-.foot-grid p { margin: 12px 0 0; font-size: var(--step--1); }
-.foot nav { display: grid; gap: 8px; align-content: start; font-size: var(--step--1); }
-.foot nav b { color: #fff; margin-bottom: 4px; }
+.foot-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: var(--step--1); }
 .foot nav a { color: var(--night-text); text-decoration: none; }
 .foot nav a:hover { color: #fff; text-decoration: underline; }
-.legal { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--night-line); font-size: 0.8rem; color: #8ea3c4; }
+.legal { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--night-line); font-size: 0.8rem; color: #8ea3c4; }
 
 /* 좁은 화면 */
 @media (max-width: 900px) {
-  .hero { padding: 40px 0 64px; }
+  .hero { padding: 48px 0 64px; }
   .hero-grid, .split, .dl-grid, .promises { grid-template-columns: 1fr; gap: 40px; }
-  .nav { display: none; }
-  .top-row { justify-content: space-between; }
+  .nav a:not([href="#download"]) { display: none; }
   .band { padding: 72px 0; }
   .arch { grid-template-columns: 1fr; grid-template-rows: none; gap: 0; }
   .wire { width: 2px; height: 22px; margin-left: 24px; }
   .node.side { grid-column: auto; margin-top: 22px; }
   .node.side::before { left: 24px; top: -23px; height: 22px; }
-  .foot-grid { grid-template-columns: 1fr 1fr; }
-  .foot-grid > div:first-child { grid-column: 1 / -1; }
 }
 @media (max-width: 560px) {
   .staff thead { display: none; }
@@ -272,7 +254,6 @@ details p { margin: 0 0 22px; color: var(--ink-2); max-width: 38em; }
   .staff td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; margin-top: 6px; color: var(--ink-2); }
   .staff td:last-child { width: auto; grid-row: 1; grid-column: 2; }
   .tools { grid-template-columns: 1fr; }
-  .shot { width: 100%; }
   .human { max-width: 92%; }
   .stage { min-height: 0; }
 }
