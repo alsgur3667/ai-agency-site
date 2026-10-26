@@ -1,29 +1,61 @@
-// 첫 화면 장면을 한 번 재생한다: 요청 → 승인 카드 → 등록됨.
-// 제목을 먼저 읽도록 조금 늦게 시작한다. 움직임 줄이기를 켠 사람에게는 처음부터 다 보여 준다.
+// 첫 화면 시연: 요청 → 정리 중 → 작업 초안 → 전달 준비 완료를 약 10초마다 반복한다.
+// 요소마다 data-from · data-to(ms)에 맞춰 .on을 붙였다 뗀다. 화면에 안 보이거나 탭이 숨겨지면 멈추고,
+// 움직임 줄이기를 켠 사람에게는 마지막 상태만 보여 준다(.js를 붙이지 않음).
 (function () {
-  const stage = document.querySelector(".stage");
-  if (!stage || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const demo = document.querySelector(".demo");
+  if (!demo) return;
 
-  document.documentElement.classList.add("js");
-  const steps = [...stage.querySelectorAll(".msg")];
-  const card = stage.querySelector(".card");
-  const replay = stage.querySelector(".replay");
-  const delays = [0, 1100, 2800];
+  const LOOP = 10000;
+  const FADE_OUT = 9400;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const items = [...demo.querySelectorAll("[data-from], [data-to]")].map((el) => ({
+    el,
+    from: Number(el.dataset.from || 0),
+    to: el.dataset.to ? Number(el.dataset.to) : null,
+  }));
   let timers = [];
+  let running = false;
+  let inView = true;
 
-  // lead: 처음에는 1.5초 기다렸다가 장면을 띄우고, 다시 보기는 바로 시작한다
-  function play(lead) {
+  function clear() {
     timers.forEach(clearTimeout);
-    stage.classList.add("play");
-    card.classList.remove("approved");
-    steps.forEach((s) => s.classList.remove("shown"));
-    replay.hidden = true;
-    timers = steps.map((s, i) => setTimeout(() => s.classList.add("shown"), lead + delays[i]));
-    timers.push(setTimeout(() => stage.classList.add("on"), Math.max(0, lead - 400)));
-    timers.push(setTimeout(() => card.classList.add("approved"), lead + 2200));
-    timers.push(setTimeout(() => { replay.hidden = false; }, lead + 3500));
+    timers = [];
   }
 
-  replay.addEventListener("click", () => play(300));
-  play(1500);
+  function loop() {
+    clear();
+    // 숨긴 채로 전환 없이 처음 상태로 돌린 뒤 보여 준다. 그래야 지난 바퀴의 글자가 새 요청 뒤에 겹쳐 보이지 않는다
+    demo.classList.add("reset");
+    items.forEach(({ el }) => el.classList.remove("on"));
+    void demo.offsetWidth;
+    demo.classList.remove("reset", "out");
+    items.forEach(({ el, from, to }) => {
+      timers.push(setTimeout(() => el.classList.add("on"), from));
+      if (to !== null) timers.push(setTimeout(() => el.classList.remove("on"), to));
+    });
+    timers.push(setTimeout(() => demo.classList.add("out"), FADE_OUT));
+    timers.push(setTimeout(loop, LOOP));
+  }
+
+  function update() {
+    const play = !reduce.matches && !document.hidden && inView;
+    document.documentElement.classList.toggle("js", !reduce.matches);
+    if (play && !running) {
+      running = true;
+      loop();
+    } else if (!play && running) {
+      running = false;
+      clear();
+    }
+  }
+
+  document.addEventListener("visibilitychange", update);
+  reduce.addEventListener("change", update);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      inView = entry.isIntersecting;
+      update();
+    }).observe(demo);
+  }
+  update();
 })();

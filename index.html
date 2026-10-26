@@ -41,22 +41,57 @@
           <a class="btn" href="#download">Windows 앱 다운로드</a>
         </div>
 
-        <figure class="stage" aria-label="매니저가 요청을 이슈로 바꾸는 장면">
-          <ol class="thread">
-            <li class="msg human">
-              <p class="said">결제 페이지에서 쿠폰 쓰면 금액이 이상해요</p>
-            </li>
-            <li class="msg card">
-              <p class="card-head">GitHub 이슈를 만들까요?</p>
-              <dl>
-                <dt>제목</dt><dd>쿠폰 적용 시 금액 계산 오류</dd>
-                <dt>비슷한 항목</dt><dd>#2 쿠폰을 쓰면 배송비까지 할인됨 (닫힘)</dd>
+        <!-- 시연 화면: 비개발자의 요청이 개발 작업으로 정리되는 과정(예시 화면). main.js가 약 10초마다 반복한다 -->
+        <figure class="demo" aria-label="예시 화면: 기획자의 요청 «쿠폰을 적용했는데 결제 금액이 이상해요»가 문제, 유형, 우선순위와 재현 조건, 예상과 실제 결과, 담당자 전달 내용을 갖춘 개발 작업으로 정리된다">
+          <div class="demo-head" aria-hidden="true">
+            <span class="demo-where">쇼핑앱 <b># 요청</b></span>
+            <span class="demo-status">
+              <span data-to="2200">새 요청</span>
+              <span data-from="2200" data-to="4400">정리 중</span>
+              <span data-from="4400" data-to="6800">작업 초안</span>
+              <span class="ready" data-from="6800">전달 준비 완료</span>
+            </span>
+            <i class="demo-progress" data-from="2200" data-to="4400"></i>
+          </div>
+
+          <div class="demo-body" aria-hidden="true">
+            <div class="demo-chat" data-to="2200">
+              <p class="demo-who"><span class="avatar">지</span><b>지수</b><span>기획, 방금</span></p>
+              <p class="said">쿠폰을 적용했는데 결제 금액이 이상해요.</p>
+            </div>
+
+            <div class="demo-doc">
+              <p class="demo-quote" data-from="2300"><span>지수의 요청</span>쿠폰을 적용했는데 결제 금액이 이상해요.</p>
+              <dl class="demo-fields" data-from="2600">
+                <div data-from="2700"><dt>문제</dt><dd>쿠폰 적용 시 결제 금액 오류</dd></div>
+                <div data-from="3000"><dt>유형</dt><dd><span class="demo-tag">버그 리포트</span></dd></div>
+                <div data-from="3300"><dt>우선순위</dt><dd>확인 필요</dd></div>
               </dl>
-              <div class="card-actions"><span class="ghost">거절</span><span class="ok">승인하고 실행</span></div>
-            </li>
-            <li class="msg done">#11 등록됨. 현우 님에게 전달했어요</li>
-          </ol>
-          <button class="replay" type="button" hidden>다시 보기</button>
+              <div class="demo-section" data-from="4500">
+                <h4>재현 조건</h4>
+                <ol>
+                  <li>32,000원 상품을 장바구니에 담는다</li>
+                  <li>5,000원 쿠폰을 적용한다</li>
+                  <li>결제 페이지에서 최종 금액을 본다</li>
+                </ol>
+              </div>
+              <div class="demo-section" data-from="5000">
+                <h4>예상 결과와 실제 결과</h4>
+                <div class="demo-compare">
+                  <p><span>예상</span><b>30,000원</b></p>
+                  <p><span>실제</span><b class="bad">25,000원</b></p>
+                </div>
+              </div>
+              <div class="demo-section" data-from="5500">
+                <h4>담당자에게 전달할 내용</h4>
+                <p>현우(개발): 결제 금액 계산에서 쿠폰 할인이 두 번 적용되는지 확인</p>
+              </div>
+              <ul class="demo-done" data-from="6700">
+                <li data-from="6800">개발 작업으로 정리 완료</li>
+                <li data-from="7200">담당자 전달 준비 완료</li>
+              </ul>
+            </div>
+          </div>
         </figure>
       </div>
     </section>
