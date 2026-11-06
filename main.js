@@ -8,6 +8,7 @@
   setupVoiceTabs();
   setupCardGlow();
   setupShine();
+  setupClosedDownload();
   splitWords(document.querySelector("[data-words]"));
 
   if (!hasGsap) return;
@@ -217,6 +218,16 @@ function setupCardGlow() {
       card.style.setProperty("--mx", `${e.clientX - r.left}px`);
       card.style.setProperty("--my", `${e.clientY - r.top}px`);
     });
+  });
+}
+
+// 내려받기는 열어 두지 않았다. 버튼을 누르면 파일 대신 안내 문장을 보여 준다
+function setupClosedDownload() {
+  const btn = document.querySelector("[data-closed-download]");
+  const note = document.querySelector("[data-download-note]");
+  if (!btn || !note) return;
+  btn.addEventListener("click", () => {
+    note.textContent = "지금은 내려받기를 열어 두지 않았습니다. 써 보고 싶으시면 도입 문의로 연락해 주세요.";
   });
 }
 

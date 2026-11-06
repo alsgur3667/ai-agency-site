@@ -71,6 +71,7 @@ code { font-family: var(--mono); font-size: 0.9em; background: var(--graphite-2)
   position: relative; overflow: hidden; isolation: isolate;
   transition: background-color 0.2s;
 }
+button.pill { border: 0; font-family: inherit; cursor: pointer; }
 .pill:hover { background: #0077ed; text-decoration: none; }
 .pill.small { min-height: 30px; padding: 4px 14px; font-size: 0.8125rem; }
 .pill.large { min-height: 56px; padding: 14px 34px; font-size: var(--step-1); }
